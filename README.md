@@ -2,20 +2,40 @@
 **Account / Client ID:** `667843`  
 **Brand Name:** `Krishna Shray`  
 **Platforms Supported:** Flipkart, Meesho, Amazon India (IN)  
-**Catalog Scope:** 19 High-Velocity Winning SKUs (Oversized Tees UJ35, Classic Tees 180 GSM, Hoodies 320 GSM, Ceramic Mugs, Canvas Tote Bags, Acrylic Keychains)  
+**Total Listing Rows:** 67 Sized SKUs (Every apparel size has its own dedicated row)  
+**Catalog Scope:** Oversized Tees (UJ35), Classic Round Neck Tees (180 GSM), Fleece Hoodies (320 GSM), Ceramic Mugs (11oz), Canvas Eco Tote Bags, Acrylic Keychains (Pack of 2)  
 **Pricing Strategy:** Uniform pricing across all platforms with minimum 10% clean net profit margin strictly AFTER platform commission, Easy Ship logistics, and RTO buffer deductions.
+
+---
+
+## 🛠️ Audit & Compliance Fixes Applied
+1. **Title Compliance:** All brackets `[...]` and promotional taglines have been removed from product titles. Titles strictly adhere to marketplace standards:  
+   `<Product type> - <Design theme> - <Fabric/GSM> - <Fit>`
+2. **Individual Size Rows:** Every apparel SKU is expanded into individual size rows:
+   * **UJ35 Oversized T-Shirts:** `XS`, `S`, `M`, `L`, `XL`, `XXL` (SKU Suffixes: `-XS`, `-S`, `-M`, `-L`, `-XL`, `-XXL`)
+   * **Classic 180 GSM T-Shirts:** `S`, `M`, `L`, `XL`, `XXL`
+   * **Fleece 320 GSM Hoodies:** `S`, `M`, `L`, `XL`, `XXL`
+   * **Mugs, Tote Bags & Keychains:** Single free-size / standard row.
+3. **Empty Main Image URLs:** `Main Image URL` is strictly empty (`""`) across all rows to prevent any placeholder/fake URL rejections. Real mockup URLs will be inserted by Fo.  
+   *Reference Real URL Format:*  
+   `https://qikink-assets.s3.ap-south-1.amazonaws.com/clients/667843/clientProducts/32516396/images/Front_1_c_1.jpg`
+4. **Authentic Indian Audience Themes:** Eliminated fictional/anime themes in favor of high-demand domestic themes:
+   * **Devotional:** Shree Krishna Flute Morpankh, Radha Krishna Bhakti, Mahadev Trishul Damru, Jai Shree Ram Ayodhya, Mahabali Hanumanji.
+   * **Festive:** Shubh Deepavali Mandala, Shubh Labh Diya.
+   * **Motivational / Typography:** Karma Bhagavad Gita Sanskrit, Kar Har Maidan Fateh, Subah Ki Pehli Chai.
+   * **Field Added:** New column `design_status = pending_fo` included in every single row.
 
 ---
 
 ## 📁 Repository Directory Structure
 ```
 ├── /flipkart/
-│   └── flipkart_bulk_listing.csv     # Complete Flipkart bulk upload template with FSN/SKU/Attributes
+│   └── flipkart_bulk_listing.csv     # 67 rows with FSN/SKU/Size/Attributes
 ├── /meesho/
-│   └── meesho_bulk_listing.csv       # Meesho Supplier Panel catalog feed with wrong/defective return price
+│   └── meesho_bulk_listing.csv       # 67 rows formatted for Meesho Supplier Panel
 ├── /amazon/
-│   └── amazon_flat_file_in.csv       # Amazon India Flat File format with 5 bullet points & search terms
-└── README.md                         # Pricing mathematics, size charts, HSN codes, and handover audit
+│   └── amazon_flat_file_in.csv       # 67 rows formatted for Amazon India Flat File
+└── README.md                         # Full pricing mathematics, size charts, HSN codes, and handover audit
 ```
 
 ---
@@ -96,6 +116,6 @@ Every single product strictly follows the golden launch rule: **Net margin ≥ 1
 ---
 
 ## 🤝 Handover Notes for Fo & Kamlesh
-1. **Mockup Images:** Mockup image URLs are standardized under `assets/mockups/[SKU].jpg`. Fo will supply or link the finalized high-resolution graphical mockups into these endpoints.
-2. **Account Linking:** Qikink Client ID `667843` is mapped. Orders received on Flipkart/Amazon/Meesho can be pushed to Qikink directly via API or CSV import.
-3. **Compliance:** Zero fake data, zero invented fields, 100% compliant with Amazon IN, Flipkart, and Meesho bulk upload validation engines.
+1. **Mockup Images:** `main_image_url` is left empty in all rows. Fo can directly populate live Amazon S3 assets in the established format.
+2. **Design Status:** Every row tracks `design_status = pending_fo`. Once Fo uploads mockups, this can be transitioned to `ready_for_upload`.
+3. **Account Linkage:** Qikink Client ID `667843` is mapped.
